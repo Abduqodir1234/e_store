@@ -9,7 +9,7 @@ import ResponseWithData from "../../../components/Responses/ResponseWithData";
 let Login = async(req:Request,res:Response)=>{
     let {email,password} = await req.body
     let user:any = await MainCodeCheck(res,email,password)
-    await user.matchPassword(password,async(err:any,isMatch:any)=>{
+    await user?.matchPassword(password,async(err:any,isMatch:any)=>{
         if(err){
             ErrorResponse(res,err)
         }

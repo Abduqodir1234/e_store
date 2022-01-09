@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import ErrorResponse from "../../../components/Responses/ErrorResponse";
 import ResponseWithData from "../../../components/Responses/ResponseWithData";
 import Users, {UserDocument} from "../../../Models/Users";
-import PositiveResponse from "../../../components/Responses/PositiveResponse";
-import {StatusCodes} from "http-status-codes";
 
 let GetUser = async(req:any,res:Response) =>{
     try{
@@ -16,7 +14,7 @@ let GetUser = async(req:any,res:Response) =>{
 
     }
     catch(e:any){
-        ErrorResponse(res,e)
+        ErrorResponse(res,e.message)
     }
    
 }

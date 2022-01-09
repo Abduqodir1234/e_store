@@ -2,10 +2,16 @@ import { Response} from "express";
 import Sessions from "../../../Models/Session";
 import PositiveResponse from "../../../components/Responses/PositiveResponse";
 import {StatusCodes} from "http-status-codes";
+import ErrorResponse from "../../../components/Responses/ErrorResponse";
 
 let Logout = async(req:any,res:Response)=>{
-    let sessionId = req.user.session
-    await Sessions.findOneAndUpdate({_id:sessionId},{valid:false})
-    PositiveResponse(res,"Success",StatusCodes.OK)
+    try{
+        let sessionId = req.user.session
+        await Sessions.findOneAndUpdate({_id:sessionId},{valid:false})
+        PositiveResponse(res,"Success",StatusCodes.OK)
+    }
+    catch (e:any) {
+        ErrorResponse(res,e.message)
+    }
 }
 export default Logout;

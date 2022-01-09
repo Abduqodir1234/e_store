@@ -21,7 +21,7 @@ var upload = multer ({
     storage: store,
     fileFilter: (req ,file,cb)=>{
         let ext = path.extname(file.originalname)
-        if(ext == '.jpg' || ext == '.png'|| ext === ".svg" ){
+        if(ext == '.jpg' || ext == '.png'|| ext === ".svg"|| ext === ".jpeg" ){
             cb(null, true)
         }else{
             cb(new Error("Only png svg jpg is accepted"))

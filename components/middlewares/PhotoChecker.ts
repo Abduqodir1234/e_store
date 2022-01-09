@@ -3,7 +3,7 @@ import upload from "../../fileUpload/file.upload";
 import ErrorResponse from "../Responses/ErrorResponse";
 
 let PhotoChecker = async(
-    req:Request,
+    req:any,
     res:Response,
     next:NextFunction
     )=>{

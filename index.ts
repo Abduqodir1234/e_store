@@ -10,31 +10,32 @@ import errorHandler from "./components/middlewares/error-handler";
 import notFound from "./components/middlewares/notFound";
 import corsOpts from "./components/corsOpts"
 import {
-    discountRoutes,
     userRoutes
 } from "./Routes/Site";
-import verifyRole from "./components/middlewares/VerifyRoles/verifyRole";
+
+import SellersRoutes from "./Routes/SellersDashboard/sellersRoutes";
 
 
 
 let PORT = process.env.PORT || 5000;
-let app= express();
+let app = express();
 
 
 /*
     MiddleWares
 */
+
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded({extended:false}))
 app.use(urlLoggerMiddleWare)
 app.use(cors(corsOpts))
 app.use('/public',express.static('public'));
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(express.urlencoded({extended:false}))
 
 /*
     URLs
 */
 app.use("/api/v1/user",userRoutes)
-app.use("/api/v1/discount",discountRoutes)
+app.use("/api/v1/magazine/",SellersRoutes)
 app.use(notFound)
 app.use(errorHandler)
 

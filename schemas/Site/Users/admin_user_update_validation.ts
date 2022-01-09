@@ -15,7 +15,7 @@ let admin_user_update_validation = Joi.object({
     confirm_password:Joi.ref("password"),
     email:Joi.string()
         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-    photo:Joi.object(),
+    photo:Joi.string(),
     phone:Joi.string()
         .pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
         .min(PHONE_MIN_LENGTH)
