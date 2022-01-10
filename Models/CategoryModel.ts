@@ -1,10 +1,10 @@
 import {model, Schema} from "mongoose";
 
 
-let CategorySchema = new Schema({
+let ProductCategorySchema = new Schema({
     name:{type:String,required:true}
 })
 
 
-let Category = model("Category",CategorySchema)
-export default Category
+let ProductCategory = model("Category",ProductCategorySchema)
+export default ProductCategory

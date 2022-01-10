@@ -16,3 +16,4 @@ export const DB_URL = "mongodb://admin:admin@cluster0-shard-00-00.gj5ts.mongodb.
 export const PHONE_MIN_LENGTH = 13
 export const PHONE_MAX_LENGTH = 13
 export const PASSWORD_MIN_LENGTH = 7
+export const ORDER_STATUSES = [1,2,3]

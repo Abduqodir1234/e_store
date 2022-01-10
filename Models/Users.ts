@@ -41,15 +41,38 @@ let user_schema = new Schema({
     role:{
         type:String,
         enum:{
-            values:["1","2"],
+            values:["1","2"],       //1=>super admin,2=>merchant,3=>ordinary user
             message:"{VALUE} is not supported"
         },
-        default:"2"
-    },   //1=>admin,2=>user,
+        default:"3"
+    },
     photo:{
         type:String,
         required:false
-    }
+    },
+    product_ids:[
+        {type:Schema.Types.ObjectId,ref:"products"}
+    ],
+    booked_order_ids:[
+        {type:Schema.Types.ObjectId,ref:"orders"}
+    ],
+    received_order_ids:[
+        {type:Schema.Types.ObjectId,ref:"orders"}
+    ],
+    cards:[
+        {type:Schema.Types.ObjectId,ref:"cards"}
+    ],
+    created_by:{
+        type:Schema.Types.ObjectId,
+        ref:"users",
+    },
+    cart_id:{
+        type:Schema.Types.ObjectId,
+        ref:"cart"
+    },
+    wishlist_id:{
+        type:Schema.Types.ObjectId
+    },
 },{timestamps:true})
 
 

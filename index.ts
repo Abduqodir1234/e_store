@@ -1,6 +1,3 @@
-import verifyToken from "./components/middlewares/verifyToken";
-
-require("express-async-errors")
 import express from "express"
 import mongoose from "mongoose"
 import cors from "cors"
