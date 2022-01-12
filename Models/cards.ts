@@ -1,7 +1,20 @@
-import {model, Schema} from "mongoose";
+import {Document, model, Schema} from "mongoose";
+import {string} from "joi";
+
+
+export interface CardDocument extends Document{
+    user_id:string,
+    card_num:string,
+    validity_date:string,
+    phone:string,
+    name:string,
+    createdAt:string,
+    updatedAt:string
+}
+
 
 let cards_schema = new Schema({
-    merchant_id:{
+    user_id:{
         type:Schema.Types.ObjectId,
         required:true,
         ref:"users"
@@ -11,7 +24,7 @@ let cards_schema = new Schema({
         required:true
     },
     validity_date:{
-        type:Date,
+        type:String,
         required:true
     },
     phone:{

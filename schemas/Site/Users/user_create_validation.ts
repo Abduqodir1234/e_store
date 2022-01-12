@@ -9,7 +9,7 @@ let user_create_validation = Joi.object({
     email:Joi.string()
             .required()
             .invalid("undefined","null")
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
+            .email(),
     password:Joi.string()
             .min(PASSWORD_MIN_LENGTH)
             .required()

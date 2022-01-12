@@ -1,4 +1,13 @@
-import {model, Schema} from "mongoose";
+import {Document,model, Schema} from "mongoose";
+
+
+export interface WishlistDocument extends Document{
+    user_id:string,
+    product_ids:[],
+    createdAt:string,
+    updatedAt:string
+}
+
 
 let wishlist_schema = new Schema({
     user_id:{

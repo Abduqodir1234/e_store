@@ -7,10 +7,15 @@ import errorHandler from "./components/middlewares/error-handler";
 import notFound from "./components/middlewares/notFound";
 import corsOpts from "./components/corsOpts"
 import {
-    userRoutes
+    userRoutes,
+    cardRoutes,
+    wishlistRoutes,
+    productCategoryRoutes,
+    productSizeRoutes,
+    productColorRoutes,
+    discountRoutes
 } from "./Routes/Site";
-
-import SellersRoutes from "./Routes/SellersDashboard/sellersRoutes";
+import wishlist from "./Models/wishlist";
 
 
 
@@ -32,7 +37,16 @@ app.use('/public',express.static('public'));
     URLs
 */
 app.use("/api/v1/user",userRoutes)
-app.use("/api/v1/magazine/",SellersRoutes)
+app.use("/api/v1/card",cardRoutes)
+app.use("/api/v1/wishlist",wishlistRoutes)
+app.use("/api/v1/product/category",productCategoryRoutes)
+app.use("/api/v1/product/size",productSizeRoutes)
+app.use("/api/v1/product/color",productColorRoutes)
+app.use("/api/v1/product/discounts",discountRoutes)
+
+
+
+
 app.use(notFound)
 app.use(errorHandler)
 

@@ -1,7 +1,6 @@
 import {Router} from "express"
 import PhotoChecker from "../../../components/middlewares/PhotoChecker"
 import verifyToken from "../../../components/middlewares/verifyToken";
-import verifyRole from "../../../components/middlewares/VerifyRoles/verifyRole";
 
 import {
     adminUserUpdateValidator,
@@ -22,19 +21,20 @@ import {
     userUpdate,
     userUpdateById
 } from "../../../controllers/Site/user"
+import isSuperAdmin from "../../../components/middlewares/VerifyRoles/isSuperAdmin";
 let UserRoutes = Router()
 
 
 
-UserRoutes.post("/create",PhotoChecker,userCreateValidator,userRegister)
-UserRoutes.get("/list",verifyToken,verifyRole,userList)
+UserRoutes.post("/",PhotoChecker,userCreateValidator,userRegister)
+UserRoutes.get("/list",verifyToken,isSuperAdmin,userList)
 UserRoutes.post('/login',loginValidator,login)
-UserRoutes.get("/get",verifyToken,getUser)
+UserRoutes.get("/get.ts",verifyToken,getUser)
 UserRoutes.patch("/update",verifyToken,PhotoChecker,userUpdateValidator,userUpdate)
-UserRoutes.delete("/delete/:id",verifyToken,verifyRole,userDelete)
+UserRoutes.delete("/delete/:id",verifyToken,isSuperAdmin,userDelete)
 UserRoutes.post("/logout",verifyToken,logout)
-UserRoutes.get("/get/id/:id",verifyToken,verifyRole,userGetByid)
-UserRoutes.patch("/update/id/:id",verifyToken,verifyRole,PhotoChecker,adminUserUpdateValidator,userUpdateById)
+UserRoutes.get("/get.ts/id/:id",verifyToken,isSuperAdmin,userGetByid)
+UserRoutes.patch("/update/id/:id",verifyToken,isSuperAdmin,PhotoChecker,adminUserUpdateValidator,userUpdateById)
 
 
 

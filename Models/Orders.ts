@@ -1,5 +1,22 @@
-import {model, Schema} from "mongoose";
+import {model, Schema,Document} from "mongoose";
 import {ORDER_STATUSES} from "../components/Variables";
+
+export interface OrderDocument extends Document{
+    user_id:string,
+    cash_card:number,
+    paid:string,
+    coordinate:[],
+    address:string,
+    destination:string,
+    status:string,
+    product_price:string,
+    delivery_price:string,
+    cardNumber:string,
+    product_ids:[],
+    createdAt:string,
+    updatedAt:string
+}
+
 
 let order_schema = new Schema({
         user_id: {

@@ -1,4 +1,12 @@
-import {Schema,model} from "mongoose"
+import {Schema, model, Document} from "mongoose"
+
+export interface ProductCategoryDocument extends Document{
+    name:string,
+    createdAt:string,
+    updatedAt:string
+}
+
+
 let product_category_schema = new Schema({
     name:{
         type:String,

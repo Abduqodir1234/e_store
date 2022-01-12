@@ -10,8 +10,10 @@ export interface UserDocument extends Document{
     phone:string,
     role:string,
     photo:string,
-    createdAt:Date,
-    updatedAt:Date,
+    received_order_ids:[],
+    created_by:string,
+    createdAt:string,
+    updatedAt:string,
     matchPassword:any
 }
 
@@ -50,28 +52,12 @@ let user_schema = new Schema({
         type:String,
         required:false
     },
-    product_ids:[
-        {type:Schema.Types.ObjectId,ref:"products"}
-    ],
-    booked_order_ids:[
-        {type:Schema.Types.ObjectId,ref:"orders"}
-    ],
     received_order_ids:[
         {type:Schema.Types.ObjectId,ref:"orders"}
-    ],
-    cards:[
-        {type:Schema.Types.ObjectId,ref:"cards"}
     ],
     created_by:{
         type:Schema.Types.ObjectId,
         ref:"users",
-    },
-    cart_id:{
-        type:Schema.Types.ObjectId,
-        ref:"cart"
-    },
-    wishlist_id:{
-        type:Schema.Types.ObjectId
     },
 },{timestamps:true})
 
@@ -93,6 +79,8 @@ user_schema.methods.matchPassword = function(candidatePassword,cb) {
         cb(null, isMatch);
     });
 };
+
+
 
 
 

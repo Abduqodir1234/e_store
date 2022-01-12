@@ -1,5 +1,18 @@
-import {Schema} from "mongoose";
-import {number} from "joi";
+import {Schema,Document} from "mongoose";
+
+export interface CartProductsDocuments extends Document{
+    cart_id:string,
+    product_id:string,
+    size:string,
+    color:string,
+    count:number,
+    createdAt:string,
+    updatedAt:string
+}
+
+
+
+
 
 let cart_products_schema = new Schema({
     cart_id:{
@@ -17,7 +30,7 @@ let cart_products_schema = new Schema({
         required:true,
         ref:"product_sizes"
     },
-    colors:{
+    color:{
         type:Schema.Types.ObjectId,
         required:true,
         ref:"product_colors"

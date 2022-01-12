@@ -1,4 +1,16 @@
-import {model, Schema} from "mongoose";
+import {Document, model, Schema} from "mongoose";
+
+
+export interface ProductColorDocument extends Document{
+    start_date:string,
+    duration:string,
+    percentage:number,
+    description:string,
+    product_id:string,
+    createdAt:string,
+    updatedAt:string,
+}
+
 
 let product_discount_schema = new Schema({
     start_date:{
@@ -16,6 +28,10 @@ let product_discount_schema = new Schema({
     description:{
         type:String,
         required:true
+    },
+    product_id:{
+        type:Schema.Types.ObjectId,
+        ref:"product_discounts"
     }
 },{timestamps:true})
 

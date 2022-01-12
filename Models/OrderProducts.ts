@@ -1,4 +1,17 @@
-import {model, Schema} from "mongoose";
+import {Document,model, Schema} from "mongoose";
+
+export interface OrderProductsDocument extends Document{
+    product_id:string,
+    order_id:string,
+    count:string,
+    price:string,
+    size:string,
+    color:string,
+    createdAt:string,
+    updatedAt:string
+}
+
+
 
 let order_products_schema = new Schema({
     product_id:{

@@ -1,4 +1,13 @@
-import {model, Schema} from "mongoose";
+import {model, Schema,Document} from "mongoose";
+
+
+export interface CartDocument extends Document{
+    user_id:string,
+    product_ids:[],
+    createdAt:string,
+    updatedAt:string
+}
+
 
 let cart_schema = new Schema({
     user_id:{
