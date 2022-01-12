@@ -10,7 +10,8 @@ let Delete =async (req:any,res:Response)=>{
         let data = await ProductCategory.findOneAndDelete({_id:id})
         if(!data)
             ErrorResponse(res,"No category with this id")
-        PositiveResponse(res,"Deleted",StatusCodes.OK)
+        else
+            PositiveResponse(res,"Deleted",StatusCodes.OK)
     }
     catch (e:any) {
         ErrorResponse(res,e.message)

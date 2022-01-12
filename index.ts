@@ -15,7 +15,6 @@ import {
     productColorRoutes,
     discountRoutes
 } from "./Routes/Site";
-import wishlist from "./Models/wishlist";
 
 
 

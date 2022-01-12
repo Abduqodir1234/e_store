@@ -1,19 +1,19 @@
 import {Response} from "express";
+import ProductDiscount from "../../../Models/ProductDiscount";
 import ErrorResponse from "../../../components/Responses/ErrorResponse";
 import ResponseWithData from "../../../components/Responses/ResponseWithData";
-import ProductColors from "../../../Models/ProductColors";
 
 let get = async (req:any,res:Response)=>{
     try{
-        let {id} = req.params
-        let data = await ProductColors.findOne({_id:id})
+        let { id } = req.params
+        let data = await ProductDiscount.findOne({_id:id})
         if(!data)
-            ErrorResponse(res,"no category with this id")
-        else
+            ErrorResponse(res,"No product discount with this id")
+        else{
             ResponseWithData(res,data)
-
+        }
     }
-    catch (e:any){
+    catch (e:any) {
         ErrorResponse(res,e.message)
     }
 }

@@ -1,19 +1,18 @@
-import {Response} from "express";
+import {Response} from "express"
+import ProductDiscount from "../../../Models/ProductDiscount";
 import ErrorResponse from "../../../components/Responses/ErrorResponse";
 import PositiveResponse from "../../../components/Responses/PositiveResponse";
 import {StatusCodes} from "http-status-codes";
-import ProductColors from "../../../Models/ProductColors";
-
-let Delete =async (req:any,res:Response)=>{
+const Delete = async (req:any,res:Response)=>{
     try{
         let {id} = req.params
-        let data = await ProductColors.findOneAndDelete({_id:id})
+        let data = await ProductDiscount.findOneAndDelete({_id:id})
         if(!data)
-            ErrorResponse(res,"No category with this id")
+            ErrorResponse(res,"No product discount with this id")
         else
             PositiveResponse(res,"Deleted",StatusCodes.OK)
     }
-    catch (e:any) {
+    catch (e:any){
         ErrorResponse(res,e.message)
     }
 }

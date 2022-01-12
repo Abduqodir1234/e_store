@@ -8,8 +8,10 @@ let Create = async (req:any,res:Response)=>{
         if(await ProductColors.findOne({name:req.body.name})){
             ErrorResponse(res,"Category already exists with this name")
         }
-        await ProductColors.create(req.body)
-        PositiveResponse(res,"Created",StatusCodes.CREATED)
+       else{
+            await ProductColors.create(req.body)
+            PositiveResponse(res,"Created",StatusCodes.CREATED)
+        }
     }
     catch (e:any){
         ErrorResponse(res,e.message)

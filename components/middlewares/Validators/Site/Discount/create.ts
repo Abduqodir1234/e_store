@@ -10,7 +10,7 @@ let create =async (req:any,res:Response,next:NextFunction)=>{
         await create_validation.validateAsync(req.body)
         let data = await Products.findOne({_id:product_id,user_id:_id})
         if(!data)
-            throw Error("no product with this id")
+            ErrorResponse(res,"no product with this id")
         else{
             next()
         }

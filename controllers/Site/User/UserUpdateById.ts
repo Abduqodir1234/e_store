@@ -10,7 +10,8 @@ let UserUpdateById =async(req:any,res:Response) =>{
         let user = await Users.findOneAndUpdate({_id:id},{...req?.body2},{new:true,runValidators:true})
         if(!user)
             return ErrorResponse(res,"No user with this id")
-        return PositiveResponse(res,"Updated",StatusCodes.OK)
+        else
+            return PositiveResponse(res,"Updated",StatusCodes.OK)
     }
     catch (e:any) {
         ErrorResponse(res,e.message)

@@ -7,7 +7,9 @@ const Register = async (req:Request,res:Response,next:NextFunction)=>{
         if(await Users.findOne({email:req.body.email})){
             return PositiveResponse(res,"User with this email already exists",StatusCodes.BAD_REQUEST)
         }
-        await Users.create(req.body)
-        return PositiveResponse(res,"Created",StatusCodes.CREATED)
+        else{
+            await Users.create(req.body)
+            return PositiveResponse(res,"Created",StatusCodes.CREATED)
+        }
 }
 export default Register

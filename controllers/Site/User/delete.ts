@@ -11,7 +11,8 @@ let UserDelete = async(req:Request,res:Response)=>{
         if(!user){
             ErrorResponse(res,"No user with this id")
         }
-        PositiveResponse(res,"Deleted",StatusCodes.OK)
+        else
+            PositiveResponse(res,"Deleted",StatusCodes.OK)
     }
     catch(e:any){
         ErrorResponse(res,e.message)

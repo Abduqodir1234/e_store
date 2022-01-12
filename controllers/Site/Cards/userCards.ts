@@ -5,7 +5,6 @@ import ErrorResponse from "../../../components/Responses/ErrorResponse";
 
 let UserCards =async (req:any,res:Response)=>{
     try{
-        console.log(req.user.username)
         let data = await Cards.find({user_id:req.user.username._id})
         ResponseWithData(res,data)
     }

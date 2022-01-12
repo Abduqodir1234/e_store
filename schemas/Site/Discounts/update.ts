@@ -1,10 +1,8 @@
 import Joi from "joi";
 
-let create_validation = Joi.object({
+let update_validation = Joi.object({
     start_date:Joi.date()
         .greater("now")
-        .required(),
-    product_id:Joi.string()
         .required(),
     duration:Joi.number()
         .greater(0)
@@ -15,4 +13,4 @@ let create_validation = Joi.object({
         .required()
 })
 
-export default create_validation
+export default update_validation

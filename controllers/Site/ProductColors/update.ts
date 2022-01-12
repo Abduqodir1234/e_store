@@ -14,7 +14,8 @@ let update = async (req:any,res:Response)=>{
         )
         if(!data)
             ErrorResponse(res,"no category with this id")
-        PositiveResponse(res,"Updated",StatusCodes.OK)
+        else
+            PositiveResponse(res,"Updated",StatusCodes.OK)
     }
     catch (e:any) {
         ErrorResponse(res,e.message)

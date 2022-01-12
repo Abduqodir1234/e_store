@@ -9,7 +9,8 @@ let get = async (req:any,res:Response)=>{
         let data = await ProductCategory.findOne({_id:id})
         if(!data)
             ErrorResponse(res,"no category with this id")
-        ResponseWithData(res,data)
+        else
+            ResponseWithData(res,data)
 
     }
     catch (e:any){

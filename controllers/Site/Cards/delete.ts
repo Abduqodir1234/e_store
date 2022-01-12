@@ -16,7 +16,9 @@ const Carddelete = async (req:any,res:Response)=>{
         if(!deleted){
             ErrorResponse(res,"No card with this id")
         }
-        PositiveResponse(res,"Deleted",StatusCodes.OK)
+        else{
+            PositiveResponse(res,"Deleted",StatusCodes.OK)
+        }
     }
     catch(e:any){
         ErrorResponse(res,e.message)
