@@ -7,7 +7,7 @@ import {StatusCodes} from "http-status-codes";
 const Carddelete = async (req:any,res:Response)=>{
     try{
         const {id} = req.params
-        const deleted = await Cards.findByIdAndDelete(
+        const deleted = await Cards.findOneAndDelete(
             {
                     _id:id,
                     user_id:req.user.username._id

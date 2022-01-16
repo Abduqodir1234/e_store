@@ -43,7 +43,7 @@ let user_schema = new Schema({
     role:{
         type:String,
         enum:{
-            values:["1","2"],       //1=>super admin,2=>merchant,3=>ordinary user
+            values:["1","2","3"],       //1=>super admin,2=>merchant,3=>ordinary user
             message:"{VALUE} is not supported"
         },
         default:"3"

@@ -11,9 +11,13 @@ export const TWILIO_ACCOUNT_SID = "AC4a4c2dfcfdafc57f33c5d456dc9226aa"
 export const TWILIO_AUTH_TOKEN = "2d3faa3d40a05a59b94ae4edf64a422d"
 export const TWILIO_SERVICE_ID = "VAe1856482a2e3527d92fd0bcc05d8f86b"
 export const TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Iis5OTg5Mzk0MjI3MTciLCJpYXQiOjE2MzYwNDU0ODksImV4cCI6MTYzODYzNzQ4OX0.JPLlbDLM_47T6b7ka6P4eVR5ia8L0Qg6G-RLsy0Y0gg"
-export const DB_URL = "mongodb://admin:admin@cluster0-shard-00-00.gj5ts.mongodb.net:27017,cluster0-shard-00-01.gj5ts.mongodb.net:27017,cluster0-shard-00-02.gj5ts.mongodb.net:27017/e_commerce1?ssl=true&replicaSet=atlas-pj4wa7-shard-0&authSource=admin&retryWrites=true&w=majority"
+export const DB_URL = "mongodb://127.0.0.1:27017/e-commerce1"
 
 export const PHONE_MIN_LENGTH = 13
 export const PHONE_MAX_LENGTH = 13
 export const PASSWORD_MIN_LENGTH = 7
 export const ORDER_STATUSES = [1,2,3]
+export const MAX_LIMIT_CHANGES_COUNT_DB=50
+export const PRODUCTS_PAGINATION = 10
+
+//"mongodb://admin:admin@cluster0-shard-00-00.gj5ts.mongodb.net:27017,cluster0-shard-00-01.gj5ts.mongodb.net:27017,cluster0-shard-00-02.gj5ts.mongodb.net:27017/e_commerce1?ssl=true&replicaSet=atlas-pj4wa7-shard-0&authSource=admin&retryWrites=true&w=majority"

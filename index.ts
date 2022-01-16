@@ -13,7 +13,9 @@ import {
     productCategoryRoutes,
     productSizeRoutes,
     productColorRoutes,
-    discountRoutes
+    discountRoutes,
+    cartRoutes,
+    productRoutes
 } from "./Routes/Site";
 
 
@@ -42,10 +44,8 @@ app.use("/api/v1/product/category",productCategoryRoutes)
 app.use("/api/v1/product/size",productSizeRoutes)
 app.use("/api/v1/product/color",productColorRoutes)
 app.use("/api/v1/product/discounts",discountRoutes)
-
-
-
-
+app.use("/api/v1/cart",cartRoutes)
+app.use("/api/v1/product/",productRoutes)
 app.use(notFound)
 app.use(errorHandler)
 

@@ -1,4 +1,4 @@
-import {Schema,Document} from "mongoose";
+import {Schema, Document, model} from "mongoose";
 
 export interface CartProductsDocuments extends Document{
     cart_id:string,
@@ -20,11 +20,11 @@ let cart_products_schema = new Schema({
         required:true,
         ref:"cart"
     },
-    product_id:[{
+    product_id:{
         type:Schema.Types.ObjectId,
         required:true,
         ref:"products"
-    }],
+    },
     size:{
         type:Schema.Types.ObjectId,
         required:true,
@@ -39,4 +39,8 @@ let cart_products_schema = new Schema({
         type:Schema.Types.Number,
         required:true
     }
-})
+},{timestamps:true})
+
+const CartProducts = model("cart_products",cart_products_schema)
+
+export default CartProducts

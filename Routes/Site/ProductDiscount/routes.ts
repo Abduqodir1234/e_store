@@ -6,12 +6,15 @@ import {
     productDiscountUpdateValidator
 } from "../../../components/middlewares/Validators/Site/discounts";
 import {
-    productDiscountCreate, productDiscountDeleteById, productDiscountGetById,
-    productDiscountList, productDiscountUpdateById
+    productDiscountCreate,
+    productDiscountDeleteById,
+    productDiscountGetById,
+    productDiscountList,
+    productDiscountUpdateById
 } from "../../../controllers/Site/discounts";
 
 
-const DiscountRoutes =Router()
+const DiscountRoutes = Router()
 
 
 DiscountRoutes.route("/")

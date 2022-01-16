@@ -1,9 +1,9 @@
 import {Document, model, Schema} from "mongoose";
 
 
-export interface ProductSizesDocument extends Document{
+export interface ProductDocument extends Document{
     name:string,
-    price:string,
+    price:number,
     vendor_id:string,
     category:string,
     rating:number,
@@ -26,7 +26,7 @@ let product_schema = new Schema({
         required:true
     },
     price:{
-        type:String,
+        type:Number,
         required:true
     },
     vendor_id:{
@@ -65,7 +65,6 @@ let product_schema = new Schema({
     discount:{
         type:Schema.Types.ObjectId,
         ref:"product_discounts",
-        required:true
     },
     photo:[
         {
