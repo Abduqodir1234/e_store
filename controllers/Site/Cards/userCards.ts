@@ -1,5 +1,5 @@
 import { Response} from "express";
-import Cards, {CardDocument} from "../../../Models/cards";
+import Cards from "../../../Models/cards";
 import ResponseWithData from "../../../components/Responses/ResponseWithData";
 import ErrorResponse from "../../../components/Responses/ErrorResponse";
 

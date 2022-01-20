@@ -9,7 +9,7 @@ let GetUser = async(req:any,res:Response) =>{
         let user = await Users.findOne({_id:id}).select(["-password"])
         if(!user)
             ErrorResponse(res,"user does not exists")
-        else
+        else if (user)
             user.photo =`${req.protocol }://${req.get('host')}/${user.photo}`
             ResponseWithData(res,user)
 

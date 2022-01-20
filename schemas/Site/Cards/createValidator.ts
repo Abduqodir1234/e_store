@@ -13,6 +13,6 @@ let CardCreateValidator = Joi.object({
         .required(),
     name:Joi.string()
         .required()
-})
+}) 
 
 export default CardCreateValidator

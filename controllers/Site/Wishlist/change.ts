@@ -20,7 +20,6 @@ let Change = async (req:any,res:Response)=>{
             {user_id:_id},
             {product_ids}
         )
-        console.log(data.product_ids)
         ResponseWithData(res,"Success")
 
 

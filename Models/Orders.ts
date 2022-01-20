@@ -9,7 +9,6 @@ export interface OrderDocument extends Document{
     address:string,
     destination:string,
     status:string,
-    product_price:string,
     delivery_price:string,
     cardNumber:string,
     product_ids:[],
@@ -50,22 +49,17 @@ let order_schema = new Schema({
                 message:'{VALUE} not supported'
             }
         },
-        productPrice:{
-            type:String,
-            required:true
-        },
         deliveryPrice:{
             type:String,
-            required:true
         },
         cardNumber:{
             type:Schema.Types.ObjectId,
             ref:"cards",
-            required:true
         },
         product_ids:[
             {
-                type:String,
+                type:Schema.Types.ObjectId,
+                ref:"order_products"
             }
         ],
 

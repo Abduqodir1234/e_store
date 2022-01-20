@@ -15,7 +15,8 @@ import {
     productColorRoutes,
     discountRoutes,
     cartRoutes,
-    productRoutes
+    productRoutes,
+    orderRoutes
 } from "./Routes/Site";
 
 
@@ -46,6 +47,7 @@ app.use("/api/v1/product/color",productColorRoutes)
 app.use("/api/v1/product/discounts",discountRoutes)
 app.use("/api/v1/cart",cartRoutes)
 app.use("/api/v1/product/",productRoutes)
+app.use("/api/v1/order/",orderRoutes)
 app.use(notFound)
 app.use(errorHandler)
 

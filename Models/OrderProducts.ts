@@ -19,7 +19,7 @@ let order_products_schema = new Schema({
         ref:"products",
         required:true
     },
-    orderId:{
+    order_id:{
         type:Schema.Types.ObjectId,
         ref:"orders",
         required:true

@@ -1,6 +1,11 @@
 import {Response} from "express";
 import Products, {ProductDocument} from "../../Models/ProductsModel";
 import ErrorResponse from "../Responses/ErrorResponse";
+import {StatusCodes} from "http-status-codes";
+import ResponseReturner from "../Responses/Response";
+import ErrorResponseBody from "../Responses/ErrorResponseBody";
+import ResponseWithDataBody from "../Responses/ResponseWithDataBody";
+import {date} from "joi";
 
 class ProductClass{
     async searchOne(query:object){
@@ -18,13 +23,13 @@ class ProductClass{
     async countCheck(res:Response,query:object,count:number){
         let product:ProductDocument = await this.searchOne(query)
         if(!product){
-            ErrorResponse(res,`Product not found according to ${Object.keys(query)} `)
+           return  ResponseReturner(ErrorResponseBody(`Product not found according to ${Object.keys(query)} `),StatusCodes.BAD_REQUEST)
         }
         else if(product?.count < count){
-            ErrorResponse(res,"count is more than product count in our store")
+            return ResponseReturner(ErrorResponseBody("count is more than product count in our store"))
         }
         else{
-            return product
+            return ResponseReturner(ResponseWithDataBody(product))
         }
     }
 }

@@ -1,10 +1,10 @@
 import Joi from "joi";
 
 let CartProductsCreateValidator = Joi.object({
-    cart_id:Joi.string(),
-    product_id:Joi.string(),
-    size:Joi.string(),
-    color:Joi.string(),
+    cart_id:Joi.any(),
+    product_id:Joi.any(),
+    size:Joi.any(),
+    color:Joi.any(),
     count:Joi.number()
 })
 

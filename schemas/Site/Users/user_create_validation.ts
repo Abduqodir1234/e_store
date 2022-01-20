@@ -21,6 +21,8 @@ let user_create_validation = Joi.object({
             .invalid("undefined","null")
             .pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
             .min(PHONE_MIN_LENGTH).max(PHONE_MAX_LENGTH),
+    province:Joi.string()
+        .required()
     
 }) 
 export default user_create_validation

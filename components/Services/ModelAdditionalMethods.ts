@@ -1,5 +1,10 @@
 import ErrorResponse from "../Responses/ErrorResponse";
 import {Response} from "express";
+import ErrorResponseBody from "../Responses/ErrorResponseBody";
+import PositiveResponseBody from "../Responses/PositiveResponseBody";
+import ResponseWithDataBody from "../Responses/ResponseWithDataBody";
+import {StatusCodes} from "http-status-codes";
+import ResponseReturner from "../Responses/Response";
 
 class ModelAdditionalMethods{
     model:any
@@ -7,6 +12,22 @@ class ModelAdditionalMethods{
     constructor(model:any,res:Response) {
         this.model = model
         this.res = res
+    }
+
+
+    async exists_or_create(date_for_filter:object,date_for_create:object){
+        try{
+            if(await this.model.exists(date_for_filter)){
+                return ResponseReturner(ErrorResponseBody(`data with this ${Object.keys(date_for_filter)} exists`),StatusCodes.BAD_REQUEST)
+            }
+            else{
+                let data = await this.model.create(date_for_create)
+                return ResponseReturner(ResponseWithDataBody(data))
+            }
+        }
+        catch (e:any){
+            return ResponseReturner(ErrorResponseBody(e.message),StatusCodes.BAD_REQUEST)
+        }
     }
 
     async create(data:object){
@@ -22,6 +43,10 @@ class ModelAdditionalMethods{
     async find(query:object){
         let data = await this.model.find(query)
         return data
+    }
+    async findWithSelect(query:object,selected_fields:string){
+        let data = await this.model.find(query).select(selected_fields)
+        return ResponseReturner(ResponseWithDataBody(data))
     }
     async findWithSelectAndPopulation(query:object,selected_fields:string,populated_fields:string){
         let data = await this.model.find(query).select(selected_fields).populate(populated_fields)
@@ -56,34 +81,40 @@ class ModelAdditionalMethods{
                 ErrorResponse(this.res,e.message)
         }
     }
+
+
     async findOne(query:object){
         try{
             let data:any = await this.model.findOne(query)
             if(!data){
-                ErrorResponse(this.res,`No product according to search fields:${Object.keys(query)}`)
+                return ResponseReturner(ErrorResponseBody(`No product according to search fields:${Object.keys(query)}`))
             }
             else{
-                return data
+                return ResponseReturner(ResponseWithDataBody(data))
             }
         }
         catch (e:any) {
-            ErrorResponse(this.res,e.message)
+            return ResponseReturner(ErrorResponseBody(e.message))
         }
     }
+
+
     async findOneWithPopulationAndSelect(query:object,populated:string,selected:string){
         try{
             let data:any = await this.model.findOne(query).populate(populated).select(selected)
             if(!data){
-                ErrorResponse(this.res,`No product according to search fields:${Object.keys(query)}`)
+                return ResponseReturner(ErrorResponseBody(`Nothing found according to search fields:${Object.keys(query)}`),StatusCodes.BAD_REQUEST)
             }
             else{
-                return data
+                return ResponseReturner(ResponseWithDataBody(data))
             }
         }
         catch (e:any) {
-            ErrorResponse(this.res,e.message)
+            return ResponseReturner(ErrorResponseBody(e.message),StatusCodes.BAD_REQUEST)
         }
     }
+
+
     async get_or_create(query_for_search:object,query_for_create:object){
         let data = await this.model.findOne(query_for_search)
         if(!data){
@@ -93,19 +124,39 @@ class ModelAdditionalMethods{
             return data
         }
     }
+
+
     async update_or_create(data_for_get:object,data_for_update:object,data_for_create:object){
         try{
             let updated = await this.model.findOneAndUpdate(data_for_get,data_for_update)
             if(!updated){
-                return  await this.model.create(data_for_create)
+                return  ResponseReturner(ResponseWithDataBody(await this.model.create(data_for_create)))
             }
             else{
-                return updated
+                return ResponseReturner(ResponseWithDataBody(updated))
             }
         }
         catch (e:any) {
-            ErrorResponse(this.res,e.message)
+            return ResponseReturner(ErrorResponseBody(e.message),StatusCodes.BAD_REQUEST)
         }
     }
+
+
+    async deleteOne(data_for_filter:object) {
+        try{
+            let data = await this.model.findOneAndDelete(data_for_filter)
+            if (!data)
+                return ResponseReturner(ErrorResponseBody(
+                    `no user with this ${Object.keys(data_for_filter)}`),
+                    StatusCodes.BAD_REQUEST
+                )
+            else
+                return ResponseReturner(PositiveResponseBody("Deleted"))
+        }
+        catch (e:any){
+            return ResponseReturner(ErrorResponseBody(e.message),StatusCodes.BAD_REQUEST,)
+        }
+    }
+
 }
 export default ModelAdditionalMethods

@@ -2,17 +2,11 @@ import { Request, Response } from "express";
 import ResponseWithData from "../../../components/Responses/ResponseWithData";
 import Users, { UserDocument } from "../../../Models/Users"
 import ErrorResponse from "../../../components/Responses/ErrorResponse";
+import ModelAdditionalMethods from "../../../components/Services/ModelAdditionalMethods";
 
 let UsersList = async (req:Request,res:Response) =>{
-   try{
-      let users:any =  await Users.find().select(["-password"])
-      users?.forEach((one:UserDocument)=>{
-         one.photo = `${req.protocol }://${req.get('host')}/${one.photo}`
-      })
-      ResponseWithData(res,users)
-   }
-   catch(e:any){
-      ErrorResponse(res,e.message)
-   }
+   let users = new ModelAdditionalMethods(Users,res)
+   let {msg,status}  = await users.findWithSelect({},"-password")
+   res.status(status).json(msg)
 }
 export default UsersList

@@ -21,6 +21,8 @@ let admin_user_update_validation = Joi.object({
         .min(PHONE_MIN_LENGTH)
         .max(PHONE_MAX_LENGTH),
     role:Joi.string()
-        .valid("1","2")
+        .valid("1","2"),
+    province:Joi.string()
+        .required()
 })
 export default admin_user_update_validation;

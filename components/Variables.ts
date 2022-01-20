@@ -19,5 +19,8 @@ export const PASSWORD_MIN_LENGTH = 7
 export const ORDER_STATUSES = [1,2,3]
 export const MAX_LIMIT_CHANGES_COUNT_DB=50
 export const PRODUCTS_PAGINATION = 10
+export const ORDERS_PAGINATION =10
+
+export const LANGS = ["uz","ru"]
 
 //"mongodb://admin:admin@cluster0-shard-00-00.gj5ts.mongodb.net:27017,cluster0-shard-00-01.gj5ts.mongodb.net:27017,cluster0-shard-00-02.gj5ts.mongodb.net:27017/e_commerce1?ssl=true&replicaSet=atlas-pj4wa7-shard-0&authSource=admin&retryWrites=true&w=majority"

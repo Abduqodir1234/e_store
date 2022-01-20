@@ -48,6 +48,11 @@ let user_schema = new Schema({
         },
         default:"3"
     },
+    province: {
+        type:Schema.Types.ObjectId,
+        ref:"provinces",
+        required:true
+    } ,
     photo:{
         type:String,
         required:false
@@ -73,7 +78,7 @@ user_schema.pre('save', async function(next){
 });
 
 //  Match user entered password to hashed password in database
-user_schema.methods.matchPassword = function(candidatePassword,cb) {
+user_schema.methods.matchPassword = function(candidatePassword:any,cb:any) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(null,false);
         cb(null, isMatch);

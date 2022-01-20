@@ -47,10 +47,7 @@ let ProductFilterQueryGenerator =async (query:any)=>{
             data.rating = {$lte:data.rating_to}
             delete data.rating_to
         }
-        console.log(data)
         return data
-
-
 
 }
 

@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 let productQueryValidator = Joi.object({
-    _id:Joi.string(),
+    _id:Joi.any(),
     name:Joi.string(),
     price:Joi.number().integer(),
     price_from:Joi.number().integer(),

@@ -27,6 +27,7 @@
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
     "md5": "^2.3.0",
+    "mongoose": "^6.1.7",
     "multer": "^1.4.3",
     "nodemailer": "^6.7.0",
     "nodemon": "^2.0.13",
@@ -38,7 +39,8 @@
     "@types/request": "^2.48.7"
   },
   "scripts": {
-    "start": "nodemon index.ts"
+    "start": "nodemon index.ts",
+    "start:seed": "node ./components/Seeders/index.ts"
   },
   "keywords": [],
   "author": "",

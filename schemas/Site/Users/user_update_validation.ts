@@ -9,6 +9,8 @@ let user_update_validation = Joi.object({
     phone:Joi.string()
         .pattern(/[+][0-9]{12}/)
         .min(PHONE_MIN_LENGTH)
-        .max(PHONE_MAX_LENGTH)
+        .max(PHONE_MAX_LENGTH),
+    province:Joi.string()
+        .required()
 })
 export default user_update_validation;
